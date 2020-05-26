@@ -1154,6 +1154,10 @@ pre .javascript .function {
   margin-top: 0;
   text-align: center;
 }
+.site-author-image:hover {
+  -webkit-animation: jello 1s;
+  animation: jello 1s;
+}
 .links-of-author {
   margin-top: 15px;
 }
@@ -1168,7 +1172,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #09332d;
+  background: #3c6040;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
