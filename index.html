@@ -190,6 +190,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/YaoLee.png">
+      <meta itemprop="name" content="Yao Lee">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yao Lee's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/" class="post-title-link" itemprop="url">带表头单链表的逆置与排序</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-09-25 11:39:20 / 修改时间：12:01:08" itemprop="dateCreated datePublished" datetime="2020-09-25T11:39:20+08:00">2020-09-25</time>
+            </span>
+
+          
+            <span id="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/" class="post-meta-item leancloud_visitors" data-flag-title="带表头单链表的逆置与排序" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> element;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">link</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">headerList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Node *head;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">&#125;HeaderList;</span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">Init</span><span class="params">(HeaderList *h)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	h-&gt;head = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	<span class="keyword">if</span> (!h-&gt;head)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	h-&gt;head-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	h-&gt;n = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">Insert</span><span class="params">(HeaderList *h, <span class="keyword">int</span> i, ElemType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node *p, *q;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">if</span> (i &lt; <span class="number">-1</span>)</span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	p = h-&gt;head;</span><br><span class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt;= i; j++)</span><br><span class="line">		p = p-&gt;link;</span><br><span class="line">	q = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	q-&gt;element = x;</span><br><span class="line">	q-&gt;link = p-&gt;link;</span><br><span class="line">	p-&gt;link = q;</span><br><span class="line">	h-&gt;n++;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Invert</span><span class="params">(HeaderList *h)</span> <span class="comment">// 逆置</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node *p = h-&gt;head-&gt;link,*q;</span><br><span class="line">	h-&gt;head-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		q = p-&gt;link; <span class="comment">// 记住下一节点</span></span><br><span class="line">		p-&gt;link = h-&gt;head-&gt;link;</span><br><span class="line">		h-&gt;head-&gt;link = p;</span><br><span class="line">		p = q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Sort</span><span class="params">(HeaderList *h)</span> <span class="comment">// 排序</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node *p, *pre, *q;</span><br><span class="line">	p = h-&gt;head-&gt;link-&gt;link;</span><br><span class="line">	h-&gt;head-&gt;link-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		q = p-&gt;link; <span class="comment">// 记住下一节点</span></span><br><span class="line">		pre = h-&gt;head;</span><br><span class="line">		<span class="keyword">while</span> (pre-&gt;link != <span class="literal">NULL</span> &amp;&amp; pre-&gt;link-&gt;element &lt; p-&gt;element)</span><br><span class="line">		&#123;</span><br><span class="line">			pre = pre-&gt;link;</span><br><span class="line">		&#125;</span><br><span class="line">		p-&gt;link = pre-&gt;link;</span><br><span class="line">		pre-&gt;link = p;</span><br><span class="line">		p = q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Status <span class="title">Output</span><span class="params">(HeaderList *h)</span> <span class="comment">// 带表头结点的单链表的输出</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node *p;</span><br><span class="line">	<span class="keyword">if</span> (!h-&gt;n) <span class="comment">// 判断顺序表是否为空</span></span><br><span class="line">		<span class="keyword">return</span> ERROR;</span><br><span class="line">	p = h-&gt;head-&gt;link;</span><br><span class="line">	<span class="keyword">while</span> (p)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, p-&gt;element);</span><br><span class="line">		p = p-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> OK;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n, num;</span><br><span class="line">	HeaderList h;</span><br><span class="line">	Init(&amp;h);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入单链表需要插入元素的个数及各个元素的值:\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;num);</span><br><span class="line">		Insert(&amp;h, i - <span class="number">1</span>, num);</span><br><span class="line">	&#125;</span><br><span class="line">	Invert(&amp;h);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"逆置后:"</span>);</span><br><span class="line">	Output(&amp;h);</span><br><span class="line">	Sort(&amp;h);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n排序后:"</span>);</span><br><span class="line">	Output(&amp;h);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h2><h3 id="具体流程分析（逆置）"><a href="#具体流程分析（逆置）" class="headerlink" title="具体流程分析（逆置）"></a><center>具体流程分析（逆置）</center></h3><p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E5%8E%9F%E9%93%BE%E8%A1%A8.png" alt="原链表"></p>
+<center>原链表</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E9%80%86%E7%BD%AE%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="逆置初始化"></p>
+<center>逆置初始化</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E9%80%86%E7%BD%AE%E7%AC%AC%E4%B8%80%E6%AC%A1while%E5%86%85%E6%93%8D%E4%BD%9C--1.png" alt="逆置第一次while内操作--1"></p>
+<center>逆置第一次while内操作--1</center>
+<center>q = p->link;</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E9%80%86%E7%BD%AE%E7%AC%AC%E4%B8%80%E6%AC%A1while%E5%86%85%E6%93%8D%E4%BD%9C--2.png" alt="逆置第一次while内操作--2"></p>
+<center>逆置第一次while内操作--2</center>
+<center>p->link = h->head->link;</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E9%80%86%E7%BD%AE%E7%AC%AC%E4%B8%80%E6%AC%A1while%E5%86%85%E6%93%8D%E4%BD%9C--3.png" alt="逆置第一次while内操作--3"></p>
+<center>逆置第一次while内操作--3</center>
+<center>h->head->link = p;</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E9%80%86%E7%BD%AE%E7%AC%AC%E4%B8%80%E6%AC%A1while%E5%86%85%E6%93%8D%E4%BD%9C--4.png" alt="逆置第一次while内操作--4"></p>
+<center>逆置第一次while内操作--4</center>
+<center>p = q;</center>
+<br>
+
+<h3 id="具体流程分析（排序）"><a href="#具体流程分析（排序）" class="headerlink" title="具体流程分析（排序）"></a><center>具体流程分析（排序）</center></h3><p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E5%8E%9F%E9%93%BE%E8%A1%A8.png" alt="原链表"></p>
+<center>原链表</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E6%8E%92%E5%BA%8F%E5%88%9D%E5%A7%8B%E5%8C%96.png" alt="排序初始化"></p>
+<center>排序初始化</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%81%8D%E5%8E%86%E5%90%8E.png" alt="第一次遍历后"></p>
+<center>第一次遍历后</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E7%AC%AC%E4%BA%8C%E6%AC%A1%E9%81%8D%E5%8E%86%E5%90%8E.png" alt="第二次遍历后"></p>
+<center>第二次遍历后</center>
+<br>
+
+<p><img src="/2020/09/25/%E5%B8%A6%E8%A1%A8%E5%A4%B4%E5%8D%95%E9%93%BE%E8%A1%A8%E7%9A%84%E9%80%86%E7%BD%AE%E4%B8%8E%E6%8E%92%E5%BA%8F/%E7%AC%AC%E4%B8%89%E6%AC%A1%E9%81%8D%E5%8E%86%E5%90%8E.png" alt="第三次遍历后"></p>
+<center>第三次遍历后</center>
+<br>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/LeetCode-%E9%9D%A2%E8%AF%95%E9%A2%9846/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -744,7 +872,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -757,7 +885,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -800,12 +928,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">7k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4 分钟</span>
+    <span title="站点阅读时长">6 分钟</span>
 </div>
 
         
