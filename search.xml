@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>LeetCode</title>
-    <url>/2020/11/13/LeetCode/</url>
-    <content><![CDATA[<p><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">LeetCode</a></p>
+    <title>LeetCode-面试题46</title>
+    <url>/2020/06/09/LeetCode-%E9%9D%A2%E8%AF%95%E9%A2%9846/</url>
+    <content><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。</p>
 <a id="more"></a>
 
-<h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1.两数之和"></a>1.两数之和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 12258</span><br><span class="line">输出: 5</span><br><span class="line">解释: 12258有5种不同的翻译，分别是&quot;bccfi&quot;, &quot;bwfi&quot;, &quot;bczi&quot;, &quot;mcfi&quot;和&quot;mzi&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><h5 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">translateNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp算法</span></span><br><span class="line">        <span class="keyword">int</span> prev1=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> prev2=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        String s = String.valueOf(num);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> p = s.charAt(i-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> cur = prev1;</span><br><span class="line">            <span class="keyword">if</span>(p==<span class="string">'1'</span>)&#123;</span><br><span class="line">                cur+=prev2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(p==<span class="string">'2'</span>&amp;&amp;c&gt;=<span class="string">'0'</span>&amp;c&lt;=<span class="string">'5'</span>)&#123;</span><br><span class="line">                cur+=prev2;</span><br><span class="line">            &#125;</span><br><span class="line">            prev2=prev1;</span><br><span class="line">            prev1=cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-面试题</category>
+      </categories>
+      <tags>
+        <tag>dp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-每日一题</title>
+    <url>/2020/09/27/LeetCode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>NOJ1074</title>
@@ -30,35 +45,23 @@
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-每日一题</title>
-    <url>/2020/09/27/LeetCode-%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>LeetCode-面试题46</title>
-    <url>/2020/06/09/LeetCode-%E9%9D%A2%E8%AF%95%E9%A2%9846/</url>
-    <content><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个数字，我们按照如下规则把它翻译为字符串：0 翻译成 “a” ，1 翻译成 “b”，……，11 翻译成 “l”，……，25 翻译成 “z”。一个数字可能有多个翻译。请编程实现一个函数，用来计算一个数字有多少种不同的翻译方法。</p>
-<a id="more"></a>
-
-<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入: 12258</span><br><span class="line">输出: 5</span><br><span class="line">解释: 12258有5种不同的翻译，分别是&quot;bccfi&quot;, &quot;bwfi&quot;, &quot;bczi&quot;, &quot;mcfi&quot;和&quot;mzi&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><h4 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h4><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><h5 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h5><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">translateNum</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp算法</span></span><br><span class="line">        <span class="keyword">int</span> prev1=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> prev2=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        String s = String.valueOf(num);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;s.length();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">char</span> p = s.charAt(i-<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> cur = prev1;</span><br><span class="line">            <span class="keyword">if</span>(p==<span class="string">'1'</span>)&#123;</span><br><span class="line">                cur+=prev2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(p==<span class="string">'2'</span>&amp;&amp;c&gt;=<span class="string">'0'</span>&amp;c&lt;=<span class="string">'5'</span>)&#123;</span><br><span class="line">                cur+=prev2;</span><br><span class="line">            &#125;</span><br><span class="line">            prev2=prev1;</span><br><span class="line">            prev1=cur;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-        <category>LeetCode-面试题</category>
-      </categories>
-      <tags>
-        <tag>dp</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2020/05/23/hello-world/</url>
     <content><![CDATA[<h1 id="你好-世界"><a href="#你好-世界" class="headerlink" title="你好 世界"></a>你好 世界</h1><a id="more"></a>
 
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello World"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>LeetCode</title>
+    <url>/2020/11/13/LeetCode/</url>
+    <content><![CDATA[<p><a href="https://leetcode-cn.com/problemset/all/" target="_blank" rel="noopener">LeetCode</a></p>
+<a id="more"></a>
+
+<h2 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<h2 id="两数之和-1"><a href="#两数之和-1" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<h2 id="两数之和-2"><a href="#两数之和-2" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<h2 id="两数之和-3"><a href="#两数之和-3" class="headerlink" title="两数之和"></a>两数之和</h2><h3 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+]]></content>
   </entry>
   <entry>
     <title>NOJ1077</title>
@@ -89,17 +92,6 @@
         <tag>dfs</tag>
         <tag>bfs</tag>
         <tag>dinic</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>算法总结</title>
-    <url>/2020/05/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>算法学习</p>
-<a id="more"></a>
-<h3 id="dfs-bfs-dinic"><a href="#dfs-bfs-dinic" class="headerlink" title="dfs|bfs|dinic"></a>dfs|bfs|dinic</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><h4 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h4><p>NOJ1074(dfs|bfs|dinic): <a href="http://localhost:4000/2020/05/26/NOJ1074/" target="_blank" rel="noopener">http://localhost:4000/2020/05/26/NOJ1074/</a></p>
-]]></content>
-      <tags>
-        <tag>算法总结</tag>
       </tags>
   </entry>
   <entry>
@@ -159,6 +151,17 @@
 ]]></content>
       <tags>
         <tag>单链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法总结</title>
+    <url>/2020/05/26/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>算法学习</p>
+<a id="more"></a>
+<h3 id="dfs-bfs-dinic"><a href="#dfs-bfs-dinic" class="headerlink" title="dfs|bfs|dinic"></a>dfs|bfs|dinic</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><h4 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h4><p>NOJ1074(dfs|bfs|dinic): <a href="http://localhost:4000/2020/05/26/NOJ1074/" target="_blank" rel="noopener">http://localhost:4000/2020/05/26/NOJ1074/</a></p>
+]]></content>
+      <tags>
+        <tag>算法总结</tag>
       </tags>
   </entry>
 </search>
